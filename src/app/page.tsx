@@ -20,6 +20,9 @@ export const metadata: Metadata = buildMetadata({
   path: "/",
 });
 
+// Real testimonials = everything in content.ts except the leftover "Placeholder" sample entries.
+const realTestimonials = placeholderTestimonials.filter((t) => t.author.trim().toLowerCase() !== "placeholder");
+
 export default function HomePage() {
   const homeFaqs = faqs.slice(0, 5);
   return (
@@ -58,7 +61,7 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="container-site bg-tint section-y">
+      <section className="container-site section-y">
         <div className="mb-12 grid gap-6 lg:grid-cols-12">
           <div className="lg:col-span-4"><Eyebrow>Services</Eyebrow></div>
           <h2 className="text-4xl leading-tight md:text-5xl lg:col-span-8">{services.length} clinics, from routine GP care to joint injections and minor surgery.</h2>
@@ -67,7 +70,7 @@ export default function HomePage() {
       </section>
 
       {/* About */}
-      <section className="section-y">
+      <section className="bg-tint section-y">
         <div className="container-site grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Eyebrow>About the clinic</Eyebrow>
@@ -99,7 +102,7 @@ export default function HomePage() {
       )}
 
       {/* Doctors */}
-      <section className="bg-accent container-site section-y">
+      <section className="container-site section-y">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Eyebrow>Our doctors</Eyebrow>
@@ -126,9 +129,9 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials: sample quotes are NEVER shown in production. Show real, consented feedback only. */}
-      {SHOW_PLACEHOLDERS && (
-        <section className="bg-tint border-t">
-          <div className="container-site section-y"><PullQuote items={placeholderTestimonials} /></div>
+      {(SHOW_PLACEHOLDERS || realTestimonials.length > 0) && (
+        <section className="border-t">
+          <div className="container-site section-y"><PullQuote items={SHOW_PLACEHOLDERS ? placeholderTestimonials : realTestimonials} /></div>
         </section>
       )}
 

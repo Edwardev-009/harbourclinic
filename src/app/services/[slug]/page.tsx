@@ -11,6 +11,14 @@ import { SHOW_PHOTOS } from "@/data/site";
 import { buildMetadata, truncate, withLocation } from "@/lib/seo";
 import { site } from "@/data/site";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
+import { HifetPage } from "@/components/service-pages/HifetPage";
+import { GaitScanPage } from "@/components/service-pages/GaitScanPage";
+
+// Services with a dedicated, richer layout (mirrors the old site structure).
+const custom: Record<string, () => React.JSX.Element> = {
+  "hifet-pelvic-floor-therapy-chair": HifetPage,
+  "digital-gait-scan": GaitScanPage,
+};
 
 export const dynamicParams = false;
 export const generateStaticParams = () => services.map((s) => ({ slug: s.slug }));
@@ -26,6 +34,16 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
   const { slug } = await params;
   const service = getService(slug);
   if (!service) notFound();
+
+  const Custom = custom[service.slug];
+  if (Custom) {
+    return (
+      <>
+        <Custom />
+        <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Services", path: "/services" }, { name: service.name, path: `/services/${service.slug}` }])} />
+      </>
+    );
+  }
 
   const team = doctors.filter((d) => service.doctorSlugs.includes(d.slug));
   const others = services.filter((s) => s.slug !== service.slug);

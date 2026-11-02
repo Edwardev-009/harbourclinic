@@ -12,7 +12,7 @@ export const SHOW_PLACEHOLDERS = process.env.NEXT_PUBLIC_SHOW_PLACEHOLDER_CONTEN
  * harbour.jpg) have been replaced with the clinic's REAL photographs (and the alt texts in
  * src/data/content.ts / src/data/services.ts match them). Then photos show in production too.
  */
-export const HAS_REAL_PHOTOS = false;
+export const HAS_REAL_PHOTOS = true; // TODO: set to true once the client supplies real photos and alt texts
 export const SHOW_PHOTOS = HAS_REAL_PHOTOS || SHOW_PLACEHOLDERS;
 
 export const site = {
@@ -35,7 +35,7 @@ export const site = {
   // TODO: confirm real opening hours with the client. Hours are NOT published in JSON-LD until confirmed.
   hoursConfirmed: false,
   hours: [
-    { day: "Monday – Friday", time: "9:00 – 17:00" },
+    { day: "Monday – Friday", time: "10:00 – 17:00" },
     { day: "Saturday", time: "Closed" },
     { day: "Sunday", time: "Closed" },
   ],

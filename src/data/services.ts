@@ -127,10 +127,10 @@ export const services: Service[] = [
     doctorSlugs: ["mohammad-azhar", "saima-aslam"], // TODO: confirm who runs this clinic
   },
   {
-    slug: "pelvic-floor-hifem",
-    name: "Pelvic Floor Muscle Strength",
-    summary: "Non-invasive pelvic floor strengthening using the HIFEM chair.",
-    intro: "Pelvic floor muscle strengthening using a HIFEM chair. You stay clothed and seated.",
+    slug: "hifet-pelvic-floor-therapy-chair",
+    name: "HIFET Pelvic Floor Therapy Chair",
+    summary: "Non-invasive pelvic floor strengthening using the HIFEM-based HIFET chair, for women and men.",
+    intro: "Pelvic floor muscle strengthening using the HIFET chair. You stay clothed and seated.",
     image: null,
     imageAlt: "",
     treats: ["Stress incontinence", "Pelvic floor weakness after childbirth", "Weakness after menopause"],

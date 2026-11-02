@@ -17,7 +17,8 @@ export const metadata: Metadata = buildMetadata({
 export default function BookPage() {
   // Safety net: never show demo booking to real patients. Until the live API is configured,
   // production shows contact details instead. `next dev` always shows the preview flow.
-  const open = bookingMode === "live" || process.env.NODE_ENV !== "production";
+  // NEXT_PUBLIC_ENABLE_BOOKING_DEMO=true (set on Vercel PREVIEW only) also opens the demo flow for client walkthroughs.
+  const open = bookingMode === "live" || process.env.NODE_ENV !== "production" || process.env.NEXT_PUBLIC_ENABLE_BOOKING_DEMO === "true";
 
   if (!open) {
     return (
