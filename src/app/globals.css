@@ -1,0 +1,124 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Harbour Medical Clinic design system.
+ * Colours match the doctor dashboard: blue primary (#3b5fd9), purple accent (#8b5cf6),
+ * blue-to-purple gradient, cool off-white ground, deep navy for the footer (same as the dashboard sidebar).
+ * Hairline borders, small radius, almost no shadows.
+ */
+
+@theme inline {
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-instrument), system-ui, sans-serif;
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: var(--radius);
+  --radius-xl: 8px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-link: var(--link);
+  --color-tint: var(--tint);
+  --color-purple: var(--purple);
+  --color-purple-light: var(--purple-light);
+  --color-navy: var(--navy);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+}
+
+:root {
+  --radius: 6px;
+  --background: #f7f8fc;                        /* cool off-white (dashboard page background) */
+  --foreground: #172044;                        /* deep indigo-navy text */
+  --card: #ffffff;
+  --card-foreground: #172044;
+  --popover: #ffffff;
+  --popover-foreground: #172044;
+  --primary: #3b5fd9;                           /* brand primary */
+  --primary-foreground: #ffffff;
+  --secondary: #eef1fa;
+  --secondary-foreground: #172044;
+  --muted: #eef1fa;
+  --muted-foreground: #5a6285;
+  --accent: #eaf0ff;                            /* primaryLight */
+  --accent-foreground: #172044;
+  --link: #3b5fd9;
+  --tint: #eaf0ff;                              /* primaryLight: tinted sections */
+  --purple: #8b5cf6;
+  --purple-light: #f3edff;                      /* purpleLight */
+  --navy: #1e2a78;                              /* footer / dark surfaces (dashboard sidebar navy) */
+  --destructive: #c0392b;
+  --destructive-foreground: #ffffff;
+  --border: #e1e5f2;
+  --input: #c8d0e8;
+  --ring: #3b5fd9;
+  --brand-gradient: linear-gradient(90deg, #4f7fe0 0%, #6b8ff0 55%, #8b6fe8 100%);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--font-serif); letter-spacing: -0.02em; font-weight: 400; }
+  :focus-visible { outline: 2px solid var(--color-ring); outline-offset: 3px; border-radius: 2px; }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) { padding-inline: 2.5rem; }
+}
+
+@utility section-y {
+  padding-block: 4rem;
+  @media (min-width: 1024px) { padding-block: 7rem; }
+}
+
+@utility measure { max-width: 65ch; }
+
+@utility link-underline {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 200ms;
+  &:hover { text-decoration-thickness: 2px; }
+}
+
+/* Blue-to-purple brand gradient (same as the dashboard header). Use with large white text only. */
+@utility bg-brand-gradient {
+  background-image: var(--brand-gradient);
+}
