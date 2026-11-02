@@ -15,8 +15,8 @@ export function SiteFooter() {
         <div className="md:col-span-2">
           <h2 className="eyebrow !font-sans !text-primary-foreground/60">Clinic</h2>
           <ul className="mt-4 space-y-2 text-sm">
-            {nav.map((n) => <li key={n.href}><Link href={n.href} className="hover:underline">{n.label}</Link></li>)}
-            <li><Link href="/book" className="hover:underline">Book online</Link></li>
+            {nav.map((n) => <li key={n.href}><Link href={n.href} className="hover:underline text-primary-foreground">{n.label}</Link></li>)}
+            <li><Link href="/book" className="hover:underline text-primary-foreground">Book online</Link></li>
           </ul>
         </div>
         <div className="md:col-span-3">
@@ -46,9 +46,10 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-primary-foreground/15">
-        <div className="container-site flex flex-col gap-3 py-6 text-xs text-primary-foreground/60 sm:flex-row sm:justify-between">
+        <div className="container-site flex flex-col gap-3 py-6 text-xs text-primary-foreground sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} Harbour Medical Clinic, Kilcock. In an emergency call 112 or 999.</p>
-          <Link href="/privacy-policy" className="hover:underline">Privacy policy</Link>
+          <Link href="/privacy-policy" className="hover:underline text-primary-foreground">Privacy policy</Link>
+          <a href="https://webpalm.ie/" target="_blank" rel="noreferrer" className="hover:underline text-primary-foreground">Design by Webpalm Technologies</a>
         </div>
       </div>
     </footer>
